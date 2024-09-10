@@ -4,6 +4,7 @@
 
 class FadingWord(object):
     def __init__(self, word, wordDelay):
+        global phrase, MARGIN, words, drawnWords, nextWord, wordCount, nextUpdateMillis, minTextSize, maxTextSize, cx, cy, spaceWidth, lineHeight
         self.word = word
         self.alpha = 255
         self.startTime = millis()
@@ -54,7 +55,8 @@ MARGIN = 40
 
 def setup():
     global phrase, MARGIN, words, drawnWords, nextWord, wordCount, nextUpdateMillis, minTextSize, maxTextSize, cx, cy, spaceWidth, lineHeight
-    size(displayWidth, displayHeight)
+    #size(displayWidth, displayHeight)
+    size(800,800)
     
     words = phrase.split(" ")
     drawnWords = []
@@ -77,17 +79,18 @@ def setup():
     # referred to Objects example 
     
     
-def isVisible(fw):
-    return fw.alpha > 0
+#def isVisible(fw):
+    #return fw.alpha > 0
 
 
 def draw():
+    # got help from professor
+    global phrase, MARGIN, words, drawnWords, nextWord, wordCount, nextUpdateMillis, minTextSize, maxTextSize, cx, cy, spaceWidth, lineHeight
+
     background(220)
     
-    drawnWords = drawnWords.filter(isVisible)
+    #drawnWords = drawnWords.filter(isVisible)
     
-
-
     
     if millis() > nextUpdateMillis:
         nextWordIndex = wordCount % len(words)
